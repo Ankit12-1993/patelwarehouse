@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+.vscode/
+*.log
+wms-backend/target/
+wms-frontend/node_modules/
+wms-frontend/dist/
