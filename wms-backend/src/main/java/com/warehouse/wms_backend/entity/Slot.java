@@ -24,6 +24,9 @@ public class Slot {
     @Column(nullable = false)
     private String status = "AVAILABLE"; // AVAILABLE, OCCUPIED, MAINTENANCE
 
+    @Column(name = "monthly_price")
+    private BigDecimal monthlyPrice;
+
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -38,6 +41,8 @@ public class Slot {
     public void setAreaSqft(BigDecimal areaSqft) { this.areaSqft = areaSqft; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+    public BigDecimal getMonthlyPrice() { return monthlyPrice; }
+    public void setMonthlyPrice(BigDecimal monthlyPrice) { this.monthlyPrice = monthlyPrice; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

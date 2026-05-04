@@ -42,9 +42,18 @@ public class SecurityConfig {
                 
                 // Admin endpoints
                 .requestMatchers("/api/leads/**").hasRole("ADMIN")
-                .requestMatchers("/api/bookings/**").hasRole("ADMIN")
-                .requestMatchers("/api/slots/**").hasRole("ADMIN")
-                .requestMatchers("/api/vendors/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/bookings/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/bookings/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/slots/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/slots/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/vendors/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/invoices/**").hasRole("ADMIN")
+                
+                // Shared endpoints
+                .requestMatchers(HttpMethod.GET, "/api/slots/**").hasAnyRole("ADMIN", "VENDOR")
+                .requestMatchers(HttpMethod.GET, "/api/vendors/**").hasAnyRole("ADMIN", "VENDOR")
+                .requestMatchers(HttpMethod.GET, "/api/bookings/**").hasAnyRole("ADMIN", "VENDOR")
+                .requestMatchers(HttpMethod.GET, "/api/invoices/**").hasAnyRole("ADMIN", "VENDOR")
                 
                 // Catch all
                 .anyRequest().authenticated()
