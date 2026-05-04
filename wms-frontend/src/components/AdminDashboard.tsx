@@ -17,7 +17,7 @@ export default function AdminDashboard() {
 
   const fetchLeads = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/leads');
+      const res = await fetch('/api/leads');
       if (res.ok) {
         const data = await res.json();
         setLeads(data);
@@ -29,7 +29,7 @@ export default function AdminDashboard() {
 
   const updateLeadStatus = async (id: number, status: string) => {
     try {
-      await fetch(`http://localhost:8080/api/leads/${id}/status?status=${status}`, { method: 'PUT' });
+      await fetch(`/api/leads/${id}/status?status=${status}`, { method: 'PUT' });
       fetchLeads(); // Refresh list
     } catch (e) {
       console.error("Failed to update status");
