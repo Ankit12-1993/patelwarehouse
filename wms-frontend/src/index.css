@@ -100,3 +100,33 @@ button {
 .mb-4 { margin-bottom: 16px; }
 .mb-8 { margin-bottom: 32px; }
 .text-muted { color: var(--text-muted); }
+
+/* Forms & Inputs */
+.input {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--bg);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input:disabled {
+  background-color: var(--bg-secondary);
+  cursor: not-allowed;
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}

@@ -26,18 +26,16 @@ export default function LeadForm() {
     }
 
     try {
-      // Append duration and name to goodsType/companyName to avoid backend DB migrations for now
-      const combinedGoodsType = `${formData.goodsType} | Duration: ${formData.duration}`;
-      const combinedCompany = formData.companyName ? `${formData.companyName} (${formData.name})` : formData.name;
-
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          companyName: combinedCompany,
+          name: formData.name,
+          companyName: formData.companyName || formData.name,
           email: formData.email,
           phone: formData.phone,
-          goodsType: combinedGoodsType,
+          goodsType: formData.goodsType,
+          duration: formData.duration,
           requestedAreaSqft: Number(formData.requestedAreaSqft)
         })
       });

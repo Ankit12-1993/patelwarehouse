@@ -5,3 +5,6 @@
 wms-backend/target/
 wms-frontend/node_modules/
 wms-frontend/dist/
+
+# Security
+credentials.csv

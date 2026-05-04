@@ -34,7 +34,16 @@ public class BookingController {
     public ResponseEntity<Booking> allocateSlot(@PathVariable Long id, @RequestParam Long slotId) {
         return bookingRepository.findById(id).map(booking -> {
             booking.setSlotId(slotId);
-            booking.setStatus("APPROVED");
+            booking.setStatus("ACTIVE");
+            return ResponseEntity.ok(bookingRepository.save(booking));
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    // Admin endpoint: Update booking status directly
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Booking> updateBookingStatus(@PathVariable Long id, @RequestParam String status) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setStatus(status);
             return ResponseEntity.ok(bookingRepository.save(booking));
         }).orElse(ResponseEntity.notFound().build());
     }

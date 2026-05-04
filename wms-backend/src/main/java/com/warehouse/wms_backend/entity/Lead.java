@@ -29,8 +29,20 @@ public class Lead {
     @Column(nullable = false)
     private String status = "NEW";
 
+    @Column
+    private String duration;
+
+    @Column(columnDefinition = "TEXT")
+    private String notes;
+
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Column(name = "updated_by")
+    private String updatedBy;
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -47,6 +59,14 @@ public class Lead {
     public void setGoodsType(String goodsType) { this.goodsType = goodsType; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+    public String getDuration() { return duration; }
+    public void setDuration(String duration) { this.duration = duration; }
+    public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+    public String getUpdatedBy() { return updatedBy; }
+    public void setUpdatedBy(String updatedBy) { this.updatedBy = updatedBy; }
 }
